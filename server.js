@@ -26,7 +26,7 @@ app.get('/api/hello', function (req, res) {
 let urldb = {};
 let shorurl = 1;
 app.post('/api/shorturl/', (req, res) => {
-    const reglink = new RegExp('^https?:\/\/www.[a-zA-Z0-9_-]+.[A-Za-z]{1,4}$');
+    const reglink = new RegExp('^https?:\\/\\/(www.)?[a-zA-Z0-9_-]+.[A-Za-z]+');
     if (reglink.test(req.body.url)) {
         urldb[shorurl] = {original_url: req.body.url, short_url: shorurl};
         res.json({original_url: req.body.url, short_url: shorurl});
